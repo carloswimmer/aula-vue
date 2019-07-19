@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Tarefas from './views/Tarefas.vue'
-import Agenda from './views/Agenda.vue'
+import Contatos from './views/Contatos.vue'
 
 Vue.use(Router)
 
@@ -14,9 +14,9 @@ export default new Router({
             component: Tarefas
         },
         {
-            path: '/agenda',
-            name: 'agenda',
-            component: Agenda
+            path: '/contatos',
+            name: 'contatos',
+            component: Contatos
         }
     ]
 })

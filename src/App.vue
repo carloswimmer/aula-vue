@@ -9,7 +9,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <router-link to="/agenda">Agenda</router-link>
+            <router-link to="/contatos">Contatos</router-link>
           </a>
         </li>
       </ul>

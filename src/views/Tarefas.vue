@@ -4,9 +4,9 @@
     <h2>Adicionar tarefa</h2>
     <form>
       <div class="input-group mb-3">
-        <input type="text" class="form-control" placeholder="Tarefa a ser adicionada" aria-label="Tarefa a ser adicionada">
+        <input type="text" class="form-control" v-model="novaTarefa.descricao" placeholder="Tarefa a ser adicionada" aria-label="Tarefa a ser adicionada">
         <div class="input-group-append">
-          <button class="btn btn-primary" type="button">
+          <button class="btn btn-primary" type="button" @click="insereTarefa(novaTarefa)">
             Adicionar
           </button>
         </div>
@@ -14,27 +14,31 @@
     </form>
     <h2>Tarefas a fazer</h2>
     <table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Concluída</th>
-      <th>Título</th>
-      <th>Remover</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr v-for="t in tarefas">
-      <td>
-        <input type="checkbox">
-      </td>
-      <td>{{ t.descricao }}</td>
-      <td>
-        <button class="btn btn-outline-danger btn-sm" type="button">
-          Deletar
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+      <thead>
+        <tr>
+          <th>Concluída</th>
+          <th>Título</th>
+          <th>Remover</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="t in tarefas">
+          <td>
+            <input type="checkbox" v-model="t.pronta">
+          </td>
+          <td>
+            <span :class="t.pronta ? 'tarefa-pronta' : ''">
+              {{ t.descricao }}
+            </span>
+          </td>
+          <td>
+            <button class="btn btn-outline-danger btn-sm" type="button" @click="removeTarefa(t)">
+              Deletar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -57,15 +61,24 @@ export default {
         {
           pronta: false,
           descricao: 'Jantar fora de casa'
-        },
-        {
-          pronta: false,
-          descricao: 'Happy hour'
         }
-      ]
+      ],
+      novaTarefa: {
+        pronta: false,
+        descricao: ''
+      }
     }
+  },
+  methods: {
+    insereTarefa (tarefaNova) {
+      this.tarefas.push(tarefaNova)
+      this.novaTarefa = {}
+    },
+    removeTarefa (tarefaARemover) {
+      const index = this.tarefas.indexOf(tarefaARemover)
+      this.tarefas.splice(index, 1)
+    },
   }
-  
 }
 </script>
 
@@ -78,6 +91,9 @@ form {
 }
 h2 {
   margin-top: 30px;
+}
+.tarefa-pronta {
+  text-decoration: line-through;
 }
 </style>
 
