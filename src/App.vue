@@ -9,13 +9,18 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <router-link to="/about">Agenda</router-link>
+            <router-link to="/agenda">Agenda</router-link>
           </a>
         </li>
       </ul>
     </nav>
 
-    <router-view/>
+    <router-view>
+
+
+
+
+    </router-view>
   </div>
 </template>
 
@@ -33,7 +38,6 @@ body {
 a {
   color: aliceblue;
   text-decoration: none;
-  font-weight: 900;
 }
 a:hover {
   color: silver;
