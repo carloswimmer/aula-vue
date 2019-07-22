@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h1>Controle suas tarefas</h1>
+    <notificacao mensagem="Parabéns, tarefa incluída com sucesso!"></notificacao>
     <h2>Adicionar tarefa</h2>
     <form>
       <div class="input-group mb-3">
@@ -44,7 +45,7 @@
 
 <script>
 // @ is an alias to /src
-
+import Notificacao from '@/components/Notificacao'
 export default {
   name: 'tarefas',
   data () {
@@ -78,6 +79,9 @@ export default {
       const index = this.tarefas.indexOf(tarefaARemover)
       this.tarefas.splice(index, 1)
     },
+  },
+  components: {
+    Notificacao
   }
 }
 </script>
